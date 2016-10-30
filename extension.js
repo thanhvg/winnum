@@ -28,14 +28,20 @@ WinNum.prototype = {
     // var windowListLength = global.screen.get_active_workspace().list_windows().length;
     // if (windowListLength > num)
     //  global.screen.get_active_workspace().list_windows()[num].activate(0);
-
+    let wn
     let metaWorkspace = global.screen.get_active_workspace();
     let windows = metaWorkspace.list_windows().filter(function(w) {return w && !w.skip_taskbar;});
     windows.sort(function(w1, w2) {
       return w1.get_stable_sequence() - w2.get_stable_sequence();
     });
-    if (num == -1) windows[windows.length-1].activate(0);
-    else if (windows.length > num) windows[num].activate(0);
+    // if (num == -1) windows[windows.length-1].activate(0);
+    // else if (windows.length > num) windows[num].activate(0);
+    if (num == -1) wn = windows[windows.length-1];
+      else wn = windows[num];
+    // check state
+    if (wn == global.display.focus_window) wn.minimize();
+      else wn.activate(0);
+      
   },
 
   _addKeybindings: function(name, num) {
