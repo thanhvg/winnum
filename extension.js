@@ -30,7 +30,9 @@ WinNum.prototype = {
     //  global.screen.get_active_workspace().list_windows()[num].activate(0);
     let wn
     let metaWorkspace = global.screen.get_active_workspace();
-    let windows = metaWorkspace.list_windows().filter(function(w) {return w && !w.skip_taskbar;});
+    let focus_window = global.display.focus_window;
+    let monitor = focus_window.get_monitor();
+    let windows = metaWorkspace.list_windows().filter(function(w) {return w && !w.skip_taskbar && w.get_monitor() == monitor;});
     windows.sort(function(w1, w2) {
       return w1.get_stable_sequence() - w2.get_stable_sequence();
     });
@@ -39,7 +41,8 @@ WinNum.prototype = {
     if (num == -1) wn = windows[windows.length-1];
       else wn = windows[num];
     // check state
-    if (wn == global.display.focus_window) wn.minimize();
+    // if (wn == global.display.focus_window) wn.minimize();
+    if (wn == focus_window) wn.minimize();
       else wn.activate(0);
       
   },
