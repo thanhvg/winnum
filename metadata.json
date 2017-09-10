@@ -1,6 +1,6 @@
 {
   "uuid": "hello.helloWorld@email.com",
-  "shell-version": ["3.16.4"],
+  "shell-version": ["3.18", "3.20"],
   "name": "WinNum",
   "settings-schema": "org.gnome.shell.extensions.winnum", 
   "description": "Testing"
