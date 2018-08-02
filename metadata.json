@@ -1,7 +1,7 @@
 {
-  "uuid": "hello.helloWorld@email.com",
+  "uuid": "winnum@thanhvg",
   "shell-version": ["3.14","3.16","3.18","3.20"],
   "name": "WinNum",
   "settings-schema": "org.gnome.shell.extensions.winnum", 
-  "description": "Testing"
+  "description": "Winkey + # to activate the corresponding window on the window list extension shif + winkey + # to activate window on inactive monitor (dual monitors)"
 }
